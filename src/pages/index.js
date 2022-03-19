@@ -1,31 +1,29 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { LocalesList } from "gatsby-theme-i18n"
 import { StaticImage } from "gatsby-plugin-image"
+import { useIntl } from "react-intl"
+import Layout from "../components/Layout/Layout"
+import Seo from "../components/Seo/Seo"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+const Index = () => {
+    const intl = useIntl();
+    return (
+        <Layout>
+        <Seo title={intl.formatMessage({ id: "home" })} />
+        <h1>{intl.formatMessage({ id: "helloWorld" })}</h1>
+        <p>{intl.formatMessage({ id: "indexNote" })}</p>
+        <StaticImage
+            src="../images/gatsby-astronaut.png"
+            width={300}
+            quality={95}
+            formats={["auto", "webp", "avif"]}
+            alt="A Gatsby astronaut"
+            style={{ marginBottom: `1.45rem` }}
+        />
+        <h2>{intl.formatMessage({ id: "overviewLang" })}</h2>
+        <LocalesList />
+        </Layout>
+    )
+}
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["auto", "webp", "avif"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link> <br />
-      <Link to="/using-ssr">Go to "Using SSR"</Link> <br />
-      <Link to="/using-dsg">Go to "Using DSG"</Link>
-    </p>
-  </Layout>
-)
-
-export default IndexPage
+export default Index

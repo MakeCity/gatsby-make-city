@@ -1,6 +1,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import { LocalizedLink } from "gatsby-theme-i18n"
+import {LangSwitcher} from "../LangSwitcher/LangSwitcher";
 
 const Header = ({ siteTitle }) => (
   <header
@@ -17,7 +18,7 @@ const Header = ({ siteTitle }) => (
       }}
     >
       <h1 style={{ margin: 0 }}>
-        <Link
+        <LocalizedLink
           to="/"
           style={{
             color: `white`,
@@ -25,8 +26,9 @@ const Header = ({ siteTitle }) => (
           }}
         >
           {siteTitle}
-        </Link>
+        </LocalizedLink>
       </h1>
+        <LangSwitcher />
     </div>
   </header>
 )
